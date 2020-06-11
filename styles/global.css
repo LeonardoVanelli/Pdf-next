@@ -65,3 +65,19 @@ button {
 img {
   height: 200px;
 }
+
+@media (min-width: 600px) 
+{
+  .MaxContainer 
+   {
+      padding: 0 15%;
+   }
+
+}
+
+@media (min-width: 449px) 
+{
+  .descposter {
+    flex-direction: row;
+  }
+}

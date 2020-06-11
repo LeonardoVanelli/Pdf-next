@@ -15,7 +15,7 @@ export default function Home() {
   }
 
   return (
-    <div>
+    <div class="MaxContainer">
       {movie.title && (
         <>
           <header>
@@ -29,9 +29,12 @@ export default function Home() {
               return <p key={genre.id}>{genre.name}</p>;
             })}
           </div>
-          <div id="overview">{movie.overview}</div>
 
-          <img src={movie.posterPath} alt="poster"></img>
+          <div class="descposter">
+            <img id="poster" src={movie.posterPath} alt="poster"></img>
+            <div id="overview">{movie.overview}</div>
+          </div>
+
 
           <div class="container">
           <iframe

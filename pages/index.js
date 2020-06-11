@@ -1,63 +1,52 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import React, { useState } from 'react';
+import axios from 'axios';
 
 export default function Home() {
+  const [videoKey, setvideoKey] = useState('');
+  const [movie, setMovie] = useState({});
+
+  async function handleGetMovie() {
+
+    let randonMovie = await axios.get('/api/movie')
+    console.log(randonMovie.data)
+    setMovie(randonMovie.data);
+  }
+
   return (
-    <div className="container">
-      <Head>
-        <title>Pesquisador de filmes</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div>
+      {movie.title && (
+        <>
+          <header>
+            <p>{movie.title}</p>
+            <p>{movie.releaseYear}</p>
+            <p>{movie.voteCount}</p>
+            <p>{movie.voteAverage}</p>
+          </header>
+          <div id="genres">
+            {movie.genres.map(genre => {
+              return <p key={genre.id}>{genre.name}</p>;
+            })}
+          </div>
+          <div id="overview">{movie.overview}</div>
 
-      <main>
-        <h1 className="title">
-          Testes iniciais do <a href="#">Pesquisador de filmes</a>
-        </h1>
+          <img src={movie.posterPath} alt="poster"></img>
 
-        <p className="description">
-           <Link href="/api/hello"><a>Buscar os filmes (JSON)</a></Link>
-        </p>
+          <iframe
+            title="teste"
+            src={movie.urlTrailler}
+            frameBorder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            controls={0}
+          />
+        </>
+      )}
 
-      <div>
-        Entre no <Link href="/api/hello"><a>link</a></Link>, copie o texto retornado, cole na aba <b>Text</b> do
-        <a href="http://jsonviewer.stack.hu/"> jsonviewer</a> e clique na aba <b>Viewer</b>
-      </div>
-      </main>
-
-      <style jsx>{`
-        .container {
-          min-height: 100vh;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
+      <button type="button" onClick={handleGetMovie}>
+        Pesquisar filme
+      </button>
     </div>
   )
 }

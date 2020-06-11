@@ -33,7 +33,9 @@ export default function Home() {
 
           <img src={movie.posterPath} alt="poster"></img>
 
+          <div class="container">
           <iframe
+            class="responsive-iframe"
             title="teste"
             src={movie.urlTrailler}
             frameBorder="0"
@@ -41,6 +43,7 @@ export default function Home() {
             allowFullScreen
             controls={0}
           />
+          </div>
         </>
       )}
 

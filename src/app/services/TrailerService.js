@@ -14,7 +14,6 @@ class TrailerService {
         },
       }
     );
-    console.log(response);
     const [videoId] = response.data.items;
     return videoId.id.videoId;
   }

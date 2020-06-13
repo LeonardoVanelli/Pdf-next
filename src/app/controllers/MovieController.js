@@ -3,7 +3,6 @@ import RandomMovieService from '../services/RandomMovieService';
 
 class MovieController {
   async show(minYear = null, maxYear = null, genres = [], certificatio = '12') {
-    console.log('entrou')
     const randomMovieId = await RandomMovieService.run(
       minYear,
       maxYear,

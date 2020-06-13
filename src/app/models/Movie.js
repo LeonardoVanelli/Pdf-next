@@ -13,6 +13,7 @@ class Movie {
     this.trailer = null;
     this.posterPath = null;
     this.country = '';
+    this.homePage = '';
   }
 
   get certification() {

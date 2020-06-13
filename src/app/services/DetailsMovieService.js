@@ -19,7 +19,8 @@ class DetailsMovieService {
     const releaseDate = movieDetails.release_dates.results.find(
       rd => rd.iso_3166_1 === 'BR'
     );
-    [movie.releaseDate] = releaseDate.release_dates;
+
+    [movie.releaseDate] = releaseDate.release_dates || movieDetails.release_date;
 
     if (movieDetails.videos.results.length === 0) {
       movie.trailer = await trailerService.run(
@@ -44,6 +45,7 @@ class DetailsMovieService {
     movie.voteAverage = movieDetails.vote_average;
     movie.voteCount = movieDetails.vote_count;
     movie.country = movieDetails.original_language;
+    movie.homePage = movieDetails.homepage;
     movie.posterPath =
       'https://image.tmdb.org/t/p/w500' + movieDetails.poster_path;
 

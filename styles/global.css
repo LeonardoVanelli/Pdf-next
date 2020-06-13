@@ -1,28 +1,35 @@
+html {
+  flex: 1;
+  height: 100%;
+}
+
 body {
-  background: red;
+  background-image: linear-gradient(to bottom right, red, black);
 }
 
 header {
   display: flex;
   flex-direction: row;
+  color: #9687c5
 }
 
 #genres {
   display: flex;
   flex-direction: row;
+  color: #9687c5
 }
 
 #overview {
-  background: #000;
-  color: #fff;
+  background: #2d0000;
+  color: #ccc;
   padding: 10px;
   margin: 10px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+  border-radius: 5px;
 }
 
 p {
-  color: white;
   font-family: Arial, Helvetica, sans-serif;
   margin: 10px;
 }
@@ -55,15 +62,18 @@ button {
   background: #7159c1;
   border: none;
   cursor: pointer;
-  color: #fff;
+  color: #ccc;
   padding: 10px 20px;
   margin-top: 30px;
   align-items: center;
   font-size: 19px;
+  border-radius: 5px;
 }
 
 img {
   height: 200px;
+  margin-bottom: 5px;
+  border-radius: 5px;
 }
 
 @media (min-width: 600px) 
@@ -80,4 +90,40 @@ img {
   .descposter {
     flex-direction: row;
   }
+}
+
+.genres {
+  background-color: #7159c1;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  width: 100%; 
+  margin: 10px 0;
+}
+
+.genres > div {
+  padding: 10px;
+}
+
+form {
+  background-color: #2d0000;
+  color: #ccc;
+  margin-top: 50px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+input {
+  background-color: #7159c1;
+  color: #ccc;
+  border: none;  
+}
+
+a { 
+  color: #9687c5;
+  text-decoration: none;
+} 
+
+#certificatio {
+  background-color: #7159c1;
+  color: #ccc;
 }

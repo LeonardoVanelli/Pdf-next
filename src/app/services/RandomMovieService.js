@@ -3,7 +3,7 @@ import { random } from '../utils/number';
 
 class RandomMovieService {
   async run(minYear = null, maxYear = null, genres = [], certificatio = '12') {
-    const params = this.createFilter(certificatio, maxYear, minYear, genres);
+    const params = this.createFilter(certificatio, maxYear, minYear, genres);    
 
     const response = await api.get('/discover/movie', {
       params,
@@ -18,7 +18,7 @@ class RandomMovieService {
     const responseRandomPage = await api.get('/discover/movie', {
       params,
     });
-    console.log(responseRandomPage);
+
     const randomIndex = random(responseRandomPage.data.results.length - 1);
 
     if (responseRandomPage.data.results[randomIndex].overview === '') {
@@ -38,6 +38,7 @@ class RandomMovieService {
       'certification.lte': certificatio,
       adult: true,
     };
+    console.log(maxYear)
     if (maxYear) {
       params['release_date.lte'] = new Date(maxYear, 12, 31).toJSON();
     }
@@ -47,6 +48,7 @@ class RandomMovieService {
     if (genres.length > 0) {
       params.with_genres = genres.join(',');
     }
+    console.log(params)
     return params;
   }
 }

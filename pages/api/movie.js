@@ -4,8 +4,10 @@ import movieController from '../../src/app/controllers/MovieController'
 import trailerService from '../../src/app/services/TrailerService'
 
 export default async (req, res) => {
+  const {certificatio, maxYear, minYear, genres} = req.body.data
+
   try {
-  let randonMovie = await movieController.show(2010, 2020);
+  let randonMovie = await movieController.show(minYear, maxYear, genres, certificatio);
 
   let videoId = await trailerService.run(
     randonMovie.title,

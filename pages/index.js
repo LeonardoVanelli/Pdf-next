@@ -17,7 +17,6 @@ export default function Home() {
       try {
         let response = await axios.get('/api/genres')
   
-        console.log(response.data)
         setGenresApi(response.data)
         
       } catch (error) {
@@ -73,16 +72,16 @@ export default function Home() {
        
           <a href={"https://www.google.com/search?q="+ movie.title}>Mais sobre o filme</a>
        
-          <div class="descposter">
+          <div className="descposter">
             <img id="poster" src={movie.posterPath} alt="poster"></img>
             
             <div id="overview">{movie.overview}</div>
           </div>
 
 
-          <div class="container">
+          <div className="container">
           <iframe
-            class="responsive-iframe"
+            className="responsive-iframe"
             title="teste"
             src={movie.urlTrailler}
             frameBorder="0"
@@ -100,18 +99,18 @@ export default function Home() {
         {""} até o ano {" "}
         <input type="text" placeholder="AAAA" value={maxYear} onChange={event => setMaxYear(event.target.value)}/>
 
-        <div class="genres">
+        <div className="genres">
           {genresApi.map(genre => {
             return (
               <div key={genre.Id}>
                 <input type="checkbox" id={genre.Id} name={genre.Id} value={genre.Name} onChange={changeGenres}/>
-                <label for={genre.Id}> {genre.Name}</label>
+                <label htmlFor={genre.Id}> {genre.Name}</label>
               </div>
             )
           })}
         </div>
 
-        <label for="certificatio">Classificação máxima: </label>
+        <label htmlFor="certificatio">Classificação máxima: </label>
         <select name="certificatio" id="certificatio" value={certificatio} onChange={() => setCertificatio(event.target.value)}>
           <option value="L">L</option>
           <option value="10">10</option>

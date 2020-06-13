@@ -1,5 +1,5 @@
 import api from '../services/api';
-import Genre from '../models/genre'
+import Genre from '../models/Genre'
 
 class GenreController {
     async show() {

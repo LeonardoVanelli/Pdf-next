@@ -97,7 +97,7 @@ img {
 }
 
 .genres {
-  background-color: #2d0000;
+  background-color: #3a1616;
   flex-direction: row;
   flex-wrap: wrap; 
   width: 100%; 
@@ -109,7 +109,7 @@ img {
 }
 
 form {
-  background-color: #3a1616;
+  background-color: #2d0000;
   color: #ccc;
   margin-top: 50px;
   padding: 10px;

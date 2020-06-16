@@ -13,13 +13,13 @@ body {
 header {
   display: flex;
   flex-direction: row;
-  color: #9687c5
+  color: #ccc
 }
 
 #genres {
   display: flex;
   flex-direction: row;
-  color: #9687c5
+  color: #ccc
 }
 
 #overview {
@@ -119,17 +119,17 @@ form {
 }
 
 input {
-  background-color: #7159c1;
+  background-color: #3a1616;
   color: #ccc;
-  border: none;  
 }
 
 a { 
-  color: #9687c5;
+  color: #ccc;
   text-decoration: none;
 } 
 
 #certificatio {
-  background-color: #7159c1;
+  background-color: #3a1616;
   color: #ccc;
+  border-radius: 5px;
 }

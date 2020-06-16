@@ -71,6 +71,7 @@ button {
   align-items: center;
   font-size: 19px;
   border-radius: 5px;
+  box-shadow: 5px 5px 15px black;
 }
 
 img {
@@ -96,11 +97,11 @@ img {
 }
 
 .genres {
-  background-color: #7159c1;
+  background-color: #2d0000;
   flex-direction: row;
   flex-wrap: wrap; 
   width: 100%; 
-  margin: 10px 0;
+  margin: 10px 0;  
 }
 
 .genres > div {
@@ -113,6 +114,7 @@ form {
   margin-top: 50px;
   padding: 10px;
   border-radius: 5px;
+  box-shadow: 9px 8px 20px black;
 }
 
 input {

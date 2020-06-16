@@ -11,10 +11,6 @@ export default function Home({ genresApi }) {
   const [genres, setGenres] = useState([]);
   const [certificatio, setCertificatio] = useState("12");
 
-  useEffect(function () {
-    console.log(genresApi)
-  }, []) 
-
   async function handleGetMovie() {
     let randonMovie = await axios.post('/api/movie', {
       data: {
@@ -122,10 +118,6 @@ export default function Home({ genresApi }) {
 
       <button type="button" onClick={handleGetMovie}>
         Pesquisar filme
-      </button>
-
-      <button onClick={() => console.log(genresApi)}>
-        Teste
       </button>
     </div>
   )

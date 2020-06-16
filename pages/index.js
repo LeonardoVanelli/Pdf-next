@@ -1,30 +1,19 @@
-import Head from 'next/head'
-import Link from 'next/link'
+import {parseISO, format} from 'date-fns'
+import genresController from '../src/app/controllers/GenreController'
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function Home() {
-  const [movie, setMovie] = useState({});
-  const [genresApi, setGenresApi] = useState([]);
+export default function Home({ genresApi }) {
+  const [movie, setMovie] = useState({});  
   const [minYear, setMinYear] = useState("2000");
   const [maxYear, setMaxYear] = useState(new Date().getFullYear());
   const [genres, setGenres] = useState([]);
   const [certificatio, setCertificatio] = useState("12");
 
-
-  useEffect(() => {
-    async function start() {
-      try {
-        let response = await axios.get('/api/genres')
-  
-        setGenresApi(response.data)
-        
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    start();
-  }, []);
+  useEffect(function () {
+    console.log(genresApi)
+  }, []) 
 
   async function handleGetMovie() {
     let randonMovie = await axios.post('/api/movie', {
@@ -34,9 +23,15 @@ export default function Home() {
         genres,
         certificatio
       }
-    })    
+    })
     setMovie(randonMovie.data);
 
+    scrollTop()
+  }
+
+  function scrollTop() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
   function changeGenres(event) {
@@ -51,7 +46,7 @@ export default function Home() {
       setGenres(genres)
     }
     else 
-      setGenres([...genres, genreSelected])
+      setGenres([...genres, genreSelected])    
   }
 
   return (
@@ -60,7 +55,10 @@ export default function Home() {
         <>
           <header>
             <p>{movie.title}</p>
-            <p>{movie.releaseYear}</p>
+            {movie.releaseDate && 
+              // <p>{movie.releaseDate.release_date}</p>
+              <p>{format(parseISO(movie.releaseDate.release_date), 'dd/MM/yyyy')}</p>
+            }
             <p>{movie.voteCount}</p>
             <p>{movie.voteAverage}</p>
           </header>
@@ -125,6 +123,16 @@ export default function Home() {
       <button type="button" onClick={handleGetMovie}>
         Pesquisar filme
       </button>
+
+      <button onClick={() => console.log(genresApi)}>
+        Teste
+      </button>
     </div>
   )
+}
+
+export async function getServerSideProps() {
+    let genresApi = await genresController.show();
+        
+    return { props: { genresApi: JSON.parse(JSON.stringify(genresApi)) } }
 }

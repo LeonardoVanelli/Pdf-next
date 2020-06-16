@@ -38,7 +38,6 @@ class RandomMovieService {
       'certification.lte': certificatio,
       adult: true,
     };
-    console.log(maxYear)
     if (maxYear) {
       params['release_date.lte'] = new Date(maxYear, 12, 31).toJSON();
     }
@@ -46,7 +45,7 @@ class RandomMovieService {
       params['release_date.gte'] = new Date(minYear, 1, 1).toJSON();
     }
     if (genres.length > 0) {
-      params.with_genres = genres.join(',');
+      params.with_genres = genres[random(genres.length)];
     }
     console.log(params)
     return params;
